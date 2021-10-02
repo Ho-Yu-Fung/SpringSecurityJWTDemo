@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mp.mapper.PermMapper">
+    <select id="queryPermsByRoleName" resultType="com.mp.entity.Perm">
+        SELECT perm.perm_name FROM tb_perm perm
+                                       JOIN tb_role_perm role_perm ON role_perm.perm_id = perm.perm_id
+                                       JOIN tb_role role ON role_perm.role_id = role.role_id
+        WHERE role.role_name = #{roleName};
+    </select>
+</mapper>
